@@ -1,0 +1,6 @@
+{
+	"appId": "com.vicentives.app",
+	"appName": "Vicentives",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
