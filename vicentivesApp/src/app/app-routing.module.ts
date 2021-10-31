@@ -7,6 +7,18 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'calibrate',
+    loadChildren: () => import('./calibration/calibration.module').then( m => m.CalibrationModule)
+  },
+  {
+    path: 'swag',
+    loadChildren: () => import('./swag/swag.module').then( m => m.SwagModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
