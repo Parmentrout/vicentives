@@ -13,10 +13,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-img class="main-img" src="/assets/Vicentives_home.png"></ion-img>
-      <ion-button [routerLink]="['/calibrate']">Login to get started</ion-button>
+      <ion-card>
+        <img src="/assets/Vicentives_home.png" />
+        <ion-card-header>
+          <ion-card-subtitle>Vicentives</ion-card-subtitle>
+          <ion-card-title>What's your vice?</ion-card-title>
+        </ion-card-header>
+      <ion-card-content>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque dolorem recusandae eos voluptatum expedita voluptates minima explicabo consequatur modi saepe provident praesentium, ut perferendis ex quidem placeat quo sunt adipisci.
+      </ion-card-content>
+      </ion-card>
+      <div class="container">
+      <ion-button class="gimme-space-left" [routerLink]="['/calibrate']">Login to get started</ion-button>
+    </div>
+
+    <!--<ion-img class="main-img" src="/assets/Vicentives_about.png"></ion-img>
+    <p>Vicentives is a fun </p>
+   <ion-button [routerLink]="['/calibrate']">Login to get started</ion-button> -->
     <!-- <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
-  </div>
 </ion-content>
