@@ -12,7 +12,7 @@ import { TrackingComponent } from './tracking/tracking.component';
 
 
 @NgModule({
-  declarations: [AppComponent, TrackingComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: environment.production,
