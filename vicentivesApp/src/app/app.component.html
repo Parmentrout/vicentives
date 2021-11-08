@@ -1,10 +1,12 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
     <!-- fab placed to the bottom end -->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="presentModal">
+    <ion-fab class="gimme-lotta-space-bottom" vertical="bottom" horizontal="end" slot="fixed">
+      <button [routerLink]="['/tracking']">
+      <ion-fab-button>
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
+    </button>
     </ion-fab>
   <ion-tabs>
     <ion-tab-bar slot="bottom">

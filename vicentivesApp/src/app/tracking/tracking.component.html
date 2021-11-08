@@ -1,3 +1,28 @@
-<p>
-  tracking works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Track my progress
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Track my vices and virtues</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-label>Vice or Virtue?</ion-label>
+      <ion-select interface="popover">
+        <ion-select-option value="vice">Vice</ion-select-option>
+        <ion-select-option value="virtue">Virtue</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>How much?</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <ion-button [routerLink]="['/dashboard']">Submit</ion-button>
+</ion-content>

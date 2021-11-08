@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardModule)
   },
   {
+    path: 'tracking',
+    loadChildren: () => import('./tracking/tracking.module').then( m => m.TrackingModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

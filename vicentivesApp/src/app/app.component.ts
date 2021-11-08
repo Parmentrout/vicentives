@@ -18,8 +18,11 @@ export class AppComponent {
   async presentModal() {
     const modal = await this.modalController.create({
       component: TrackingComponent,
-      cssClass: 'my-custom-class'
     });
     return await modal.present();
+  }
+
+  test() {
+    alert('Test component');
   }
 }
