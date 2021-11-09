@@ -15,10 +15,14 @@
 
   <!-- <ion-img class="main-img" src="/assets/Vicentives_about.png"></ion-img> -->
   <p>This is where you set your weekly goals.  Define a baseline of your vice, your virtue, and extras that you will earn by completing 3 virtues</p>
-
+  
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input [(ngModel)]="user.name"></ion-input>
+  </ion-item>
   <ion-item>
     <ion-label>Choose your Vice</ion-label>
-    <ion-select value="vice" interface="action-sheet">
+    <ion-select value="vice" interface="action-sheet" [(ngModel)]="user.vice">
       <ion-select-option value="gaming">Video Games</ion-select-option>
       <ion-select-option value="booze">Booze</ion-select-option>
       <ion-select-option value="weed">That Sweet Gange</ion-select-option>
@@ -28,7 +32,7 @@
   </ion-item>
   <ion-item>
     <ion-label>Baseline (you always get these)</ion-label>
-    <ion-select value="vice_baseline" interface="action-sheet">
+    <ion-select value="vice_baseline" interface="action-sheet" [(ngModel)]="user.viceAmount">
       <ion-select-option value="0">0</ion-select-option>
       <ion-select-option value="1">1</ion-select-option>
       <ion-select-option value="2">2</ion-select-option>
@@ -40,23 +44,10 @@
       <ion-select-option value="8">8</ion-select-option>
     </ion-select>
   </ion-item>
-  <!-- <ion-item>
-    <ion-label>Extras (you earn these with 3 virtues)</ion-label>
-    <ion-select value="vice_baseline" interface="action-sheet">
-      <ion-select-option value="1">1</ion-select-option>
-      <ion-select-option value="2">2</ion-select-option>
-      <ion-select-option value="3">3</ion-select-option>
-      <ion-select-option value="4">4</ion-select-option>
-      <ion-select-option value="5">5</ion-select-option>
-      <ion-select-option value="6">6</ion-select-option>
-      <ion-select-option value="7">7</ion-select-option>
-      <ion-select-option value="8">8</ion-select-option>
-    </ion-select>
-  </ion-item> -->
 
   <ion-item>
     <ion-label>Choose your Virtues</ion-label>
-    <ion-select [multiple]="true" value="virtue" interface="action-sheet">
+    <ion-select [multiple]="true" value="virtue" interface="action-sheet" [(ngModel)]="user.virtues">
       <ion-select-option value="swim">Swimming</ion-select-option>
       <ion-select-option value="running">Running</ion-select-option>
       <ion-select-option value="biking">Biking</ion-select-option>
@@ -68,7 +59,7 @@
   </ion-item>
   <ion-item>
     <ion-label>How many virtues to earn an extra vice?</ion-label>
-    <ion-select value="vice_baseline" interface="action-sheet">
+    <ion-select value="vice_baseline" interface="action-sheet" [(ngModel)]="user.virtueAmount">
       <ion-select-option value="1">1</ion-select-option>
       <ion-select-option value="2">2</ion-select-option>
       <ion-select-option value="3">3</ion-select-option>
@@ -79,10 +70,5 @@
       <ion-select-option value="8">8</ion-select-option>
     </ion-select>
   </ion-item>
- <!-- <ion-item>
-    <ion-label>Max per week</ion-label>
-    <ion-input type="number" value="4"></ion-input>
-    </ion-item> -->
-
-    <ion-button [routerLink]="['/dashboard']">Save</ion-button>
+    <ion-button (click)="navigate()">Save</ion-button>
   </ion-content>
