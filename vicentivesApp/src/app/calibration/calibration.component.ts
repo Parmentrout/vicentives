@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserCalibration } from '../models/user-calibration.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-calibration',
@@ -8,41 +10,17 @@ import { Router } from '@angular/router';
 })
 export class CalibrationComponent implements OnInit {
 
-  user: UserCalibration;;
-  private readonly key = 'user';
+  user: UserCalibration;
 
-  constructor(private router: Router) { 
-    this.user = this.getUser();
+  constructor(private router: Router, private userService: UserService) { 
+    this.user = this.userService.getUser();
   }
 
   ngOnInit() {}
 
   navigate(){
-    this.saveToSession();
+    this.userService.saveToSession(this.user);
     this.router.navigate(['/dashboard'])
   }
 
-  saveToSession() : void {
-    window.localStorage.removeItem(this.key);
-    window.localStorage.setItem(this.key, JSON.stringify(this.user));
-  }
-
-  getUser(): UserCalibration {
-    let storage: string = window.localStorage.getItem(this.key);
-
-    if (storage) {
-      return JSON.parse(storage);
-    } else {
-      return new UserCalibration();
-    }
-  }
-
-}
-
-class UserCalibration {
-  name: string;
-  vice: string;
-  viceAmount: number;
-  virtues: string[];
-  virtueAmount: number;
 }
