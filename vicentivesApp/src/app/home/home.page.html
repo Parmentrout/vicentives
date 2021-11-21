@@ -13,26 +13,40 @@
     </ion-toolbar>
   </ion-header>
 
-      <ion-card>
+    <ion-card *ngIf="calibration">
+      <img src="/assets/Vicentives_home.png" />
+      <ion-card-header>
+        <ion-card-subtitle>Vicentives</ion-card-subtitle>
+        <ion-card-title>Your Week In Review</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list-header>Vices Spent (click to record)</ion-list-header>
+        <p>
+        <ion-chip disabled>
+          <ion-icon name="checkmark-circle"></ion-icon>
+          <ion-label>Vice</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-icon name="checkmark-circle"></ion-icon>
+          <ion-label>Vice</ion-label>
+        </ion-chip>
+      </p>
+      </ion-card-content>
+    </ion-card>
+
+
+      <ion-card *ngIf="!calibration">
         <img src="/assets/Vicentives_home.png" />
         <ion-card-header>
           <ion-card-subtitle>Vicentives</ion-card-subtitle>
-          <ion-card-title>What's your vice?</ion-card-title>
+          <ion-card-title>Let's setup your vice</ion-card-title>
         </ion-card-header>
-      <ion-card-content>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque dolorem recusandae eos voluptatum expedita voluptates minima explicabo consequatur modi saepe provident praesentium, ut perferendis ex quidem placeat quo sunt adipisci.
-      </ion-card-content>
+        <ion-card-content>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque dolorem recusandae eos voluptatum expedita voluptates minima explicabo consequatur modi saepe provident praesentium, ut perferendis ex quidem placeat quo sunt adipisci.
+        </ion-card-content>
+        <ion-button class="gimme-space-left" [routerLink]="['/calibrate']">Calibrate</ion-button>
       </ion-card>
-      <div class="container">
-        <ion-button class="gimme-space-left" [routerLink]="['/calibrate']">Login to get started</ion-button>
-      </div>
 
-      <div>
-        <h2>Week of 11/14/21</h2>
-        Show the Vices available and click on each to use them
-        Build an extra vice button if earned
-        <br>
-        Show the Virtues used this week and click on each virtue button to track it
-      </div>
+      
     
 </ion-content>

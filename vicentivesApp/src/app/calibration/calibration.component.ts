@@ -20,7 +20,7 @@ export class CalibrationComponent implements OnInit {
 
   navigate(){
     this.userService.saveToSession(this.user);
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/home'])
   }
 
 }
