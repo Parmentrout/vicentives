@@ -14,7 +14,8 @@
   </ion-header>
 
   <!-- <ion-img class="main-img" src="/assets/Vicentives_about.png"></ion-img> -->
-  <p>This is where you set your weekly goals.  Define a baseline of your vice, your virtue, and extras that you will earn by completing 3 virtues</p>
+  <p>This is where you set your weekly goals.  Define a baseline of your vice, your virtue, and extras that you will earn by completing
+     virtues</p>
   
   <ion-item>
     <ion-label>Name</ion-label>
@@ -70,5 +71,11 @@
       <ion-select-option value="8">8</ion-select-option>
     </ion-select>
   </ion-item>
-    <ion-button (click)="navigate()">Save</ion-button>
+    <ion-button [disabled]="!isFormReady()" (click)="navigate()" class="ion-activatable ripple-parent">Save
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-button>
+    <ion-button color="warning" (click)="clearSessionData()" class="ion-activatable ripple-parent">
+      Clear all data
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-button>
   </ion-content>

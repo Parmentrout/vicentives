@@ -19,4 +19,8 @@ export class UserService {
           return new UserCalibration();
         }
       }
+
+      deleteSessionData(): void {
+        window.localStorage.removeItem(this.key);
+      }
 }

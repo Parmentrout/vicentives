@@ -13,29 +13,45 @@
     </ion-toolbar>
   </ion-header>
 
-    <ion-card *ngIf="calibration">
+    <ion-card *ngIf="!showLogin">
       <img src="/assets/Vicentives_home.png" />
       <ion-card-header>
-        <ion-card-subtitle>Vicentives</ion-card-subtitle>
-        <ion-card-title>Your Week In Review</ion-card-title>
+        <ion-card-title>Tracking your Vices and Virtues</ion-card-title>
+        <ion-card-subtitle>Week of: {{ weekOf }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <ion-list-header>Vices Spent (click to record)</ion-list-header>
         <p>
-        <ion-chip disabled>
-          <ion-icon name="checkmark-circle"></ion-icon>
-          <ion-label>Vice</ion-label>
-        </ion-chip>
-        <ion-chip>
-          <ion-icon name="checkmark-circle"></ion-icon>
-          <ion-label>Vice</ion-label>
-        </ion-chip>
+        <ng-container *ngFor="let vice of tracking.initialVices">
+          <ion-chip (click)="recordVice(vice)" [disabled]="vice.used">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            <ion-label>Vice</ion-label>
+          </ion-chip>
+        </ng-container>
+
+        <ng-container *ngIf="tracking.extraVices && tracking.extraVices.length > 0">
+          <ion-list-header><strong>Extra Vices Earned this Week!</strong></ion-list-header>
+          <ion-chip (click)="recordVice(vice)" [disabled]="vice.used" *ngFor="let vice of tracking.extraVices">
+            <ion-icon name="medal-outline"></ion-icon>
+            <ion-label>Extra Vice!</ion-label>
+          </ion-chip>
+        </ng-container>
+
+<br>
+        <ion-list-header>Virtues (click to record)</ion-list-header>
+        <p>
+        <ng-container *ngFor="let virtue of tracking.virtues">
+          <ion-chip (click)="recordVirtue(virtue)" [disabled]="virtue.achieved">
+            <ion-icon name="heart-circle-outline"></ion-icon>
+            <ion-label>Virtue</ion-label>
+          </ion-chip>
+        </ng-container>
       </p>
       </ion-card-content>
     </ion-card>
 
 
-      <ion-card *ngIf="!calibration">
+      <ion-card *ngIf="showLogin">
         <img src="/assets/Vicentives_home.png" />
         <ion-card-header>
           <ion-card-subtitle>Vicentives</ion-card-subtitle>
@@ -44,7 +60,10 @@
         <ion-card-content>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque dolorem recusandae eos voluptatum expedita voluptates minima explicabo consequatur modi saepe provident praesentium, ut perferendis ex quidem placeat quo sunt adipisci.
         </ion-card-content>
-        <ion-button class="gimme-space-left" [routerLink]="['/calibrate']">Calibrate</ion-button>
+        <ion-button class="gimme-space-left" class="ion-activatable ripple-parent" [routerLink]="['/calibrate']">
+          Calibrate
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
       </ion-card>
 
       

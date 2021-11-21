@@ -1,7 +1,7 @@
 export class UserCalibration {
     name: string;
     vice: string;
-    viceAmount: number;
+    viceAmount: number = 1;
     virtues: string[];
-    virtueAmount: number;
+    virtueAmount: number = 1;
   }
