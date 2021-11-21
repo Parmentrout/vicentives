@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { UserCalibration } from '../models/user-calibration.model';
 import { UserTracking, Vice, Virtue } from '../models/user-tracking.model';
 import { TrackingService } from '../services/tracking.service';
@@ -16,24 +17,26 @@ export class HomePage implements OnInit, OnDestroy {
   weekOf: string;
   showLogin: boolean = true;
 
-  constructor(private userService: UserService, private trackingService: TrackingService) {
+  constructor(private userService: UserService, private trackingService: TrackingService, 
+    private route: ActivatedRoute) {
+
     let monday = this.trackingService.getWeek(new Date())[0];
     this.weekOf = `${monday.getMonth()}/${monday.getDate()}/${monday.getFullYear()}`;
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(x => this.initializeData());
+  }
+  initializeData(): void {
+    console.log('initializing');
     this.calibration = this.userService.getUser();
     this.tracking = this.trackingService.buildWeeklyTrackingData(this.calibration);
     if (this.calibration && this.calibration.name && this.calibration.vice) {
       this.showLogin = false;
     }
-    console.log(this.calibration);
   }
 
   ngOnDestroy(): void {
-    this.calibration = null;
-    this.tracking = null;
-    this.showLogin = false;
   }
 
   recordVice(vice: Vice) {

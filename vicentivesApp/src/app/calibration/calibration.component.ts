@@ -27,7 +27,7 @@ export class CalibrationComponent implements OnInit {
     this.userService.saveToSession(this.user);
     this.trackingService.deleteSessionData();
     this.trackingService.createNewTrackingData(this.user);
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home'], { queryParams: {page: 1}});
   }
 
   clearSessionData() {

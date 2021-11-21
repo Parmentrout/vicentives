@@ -5,6 +5,7 @@ import { UserCalibration } from "../models/user-calibration.model";
 export class UserService {
     private readonly key = 'user';
 
+
     saveToSession(user: UserCalibration) : void {
         window.localStorage.removeItem(this.key);
         window.localStorage.setItem(this.key, JSON.stringify(user));
