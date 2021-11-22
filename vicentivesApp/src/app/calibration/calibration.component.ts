@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserCalibration } from '../models/user-calibration.model';
 import { TrackingService } from '../services/tracking.service';
 import { UserService } from '../services/user.service';
+import { SessionService } from '../session/session.service';
 
 @Component({
   selector: 'app-calibration',
@@ -17,6 +18,7 @@ export class CalibrationComponent implements OnInit {
   constructor(
     private router: Router, 
     private userService: UserService, 
+    private sessionService: SessionService,
     private trackingService: TrackingService) { 
       this.user = this.userService.getUser();
   }
@@ -27,13 +29,15 @@ export class CalibrationComponent implements OnInit {
     this.userService.saveToSession(this.user);
     this.trackingService.deleteSessionData();
     this.trackingService.createNewTrackingData(this.user);
-    this.router.navigate(['/home'], { queryParams: {page: 1}});
+    this.sessionService.triggerConfiguration();
+    this.router.navigate(['/home']);
   }
 
   clearSessionData() {
     this.trackingService.deleteSessionData();
     this.user = new UserCalibration();
     this.userService.deleteSessionData();
+    this.sessionService.triggerConfiguration();
   }
 
   isFormReady() {

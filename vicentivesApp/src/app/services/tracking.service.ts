@@ -50,7 +50,6 @@ export class TrackingService {
       for (let i = 0; i < calibration.virtueAmount; i++) {
         tracking.virtues.push(new Virtue());
       }
-      console.log(tracking);
       this.saveToSession(tracking);
     }
 

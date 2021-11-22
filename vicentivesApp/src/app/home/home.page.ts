@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { UserCalibration } from '../models/user-calibration.model';
 import { UserTracking, Vice, Virtue } from '../models/user-tracking.model';
 import { TrackingService } from '../services/tracking.service';
 import { UserService } from '../services/user.service';
+import { SessionService } from '../session/session.service';
 
 @Component({
   selector: 'app-home',
@@ -17,22 +17,23 @@ export class HomePage implements OnInit, OnDestroy {
   weekOf: string;
   showLogin: boolean = true;
 
-  constructor(private userService: UserService, private trackingService: TrackingService, 
-    private route: ActivatedRoute) {
+  constructor(private userService: UserService, private trackingService: TrackingService, private sessionService: SessionService) {
 
     let monday = this.trackingService.getWeek(new Date())[0];
     this.weekOf = `${monday.getMonth()}/${monday.getDate()}/${monday.getFullYear()}`;
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(x => this.initializeData());
+    this.initializeData();
+    this.sessionService.calibrationChanged.subscribe(() => this.initializeData());
   }
   initializeData(): void {
-    console.log('initializing');
     this.calibration = this.userService.getUser();
     this.tracking = this.trackingService.buildWeeklyTrackingData(this.calibration);
     if (this.calibration && this.calibration.name && this.calibration.vice) {
       this.showLogin = false;
+    } else {
+      this.showLogin = true;
     }
   }
 
